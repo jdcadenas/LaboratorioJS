@@ -12,7 +12,7 @@
 // ==========================================
 // Evaluación en Pareja
 // Estudiante 1: ________
-// Estudiante 2: ________
+// Estudiante 2: Jose manuel Castro
 // Fecha: ________
 // 
 // ==========================================
@@ -45,11 +45,11 @@ const persona = { nombre: "Ada", edad: 25 };
 persona.edad = 26;                 // mutación válida
 
 // Completa para crear una copia con una propiedad adicional, sin alterar el original:
-const actualizado = { ...________, activo: true };
+const actualizado = { ... persona, activo: true };
 console.log(actualizado); // { nombre: "Ada", edad: 26, activo: true }
 
 // Ahora completa para mostrar la edad del objeto original:
-console.log(________);   // 26
+console.log(persona.edad);   // 26
 ```
 
 ### Ejercicio 3 – Parámetros por defecto y retorno de objeto literal
