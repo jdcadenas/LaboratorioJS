@@ -11,9 +11,9 @@
 ```javascript
 // ==========================================
 // Evaluación en Pareja
-// Estudiante 1: ________
-// Estudiante 2: ________
-// Fecha: ________
+// Estudiante 1: Kevin Torrealba    
+// Estudiante 2: Jesus Mata
+// Fecha: 14/05/2026
 // 
 // ==========================================
 ```
