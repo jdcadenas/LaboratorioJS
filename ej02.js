@@ -1,3 +1,6 @@
+export const saludar =()=>{
+    console.log("hola mundo")
+}
 //Ejercicio 2 – `const` con objetos, mutación e inmutabilidad con spread
 
 // Concepto: `const` impide reasignar la variable, pero permite modificar propiedades.
