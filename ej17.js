@@ -1,0 +1,4 @@
+const stock = 5;
+const estado = stock > 10 ? "Alto" : (stock > 0 ? "Bajo" : "Agotado");
+const mensaje = `Estado del producto: ${stock > 0 ? `Quedan ${stock}` : $[5]}`;
+console.log(mensaje); // "Estado del producto: Quedan 5
