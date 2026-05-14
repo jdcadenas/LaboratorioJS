@@ -11,9 +11,9 @@
 ```javascript
 // ==========================================
 // Evaluación en Pareja
-// Estudiante 1: ________
-// Estudiante 2: ________
-// Fecha: ________
+// Estudiante 1: Samuel Mosquera   
+// Estudiante 2: Luis Cala
+// Fecha: 14/05/2026
 // 
 // ==========================================
 ```
@@ -45,11 +45,11 @@ const persona = { nombre: "Ada", edad: 25 };
 persona.edad = 26;                 // mutación válida
 
 // Completa para crear una copia con una propiedad adicional, sin alterar el original:
-const actualizado = { ...________, activo: true };
+const actualizado = { ...persona, activo: true };
 console.log(actualizado); // { nombre: "Ada", edad: 26, activo: true }
 
 // Ahora completa para mostrar la edad del objeto original:
-console.log(________);   // 26
+console.log(persona);   // 26
 ```
 
 ### Ejercicio 3 – Parámetros por defecto y retorno de objeto literal
@@ -70,7 +70,7 @@ console.log(crearLibro("1984"));
 ### Ejercicio 4 – Rest operator: agrupar en una función variádica
 ```javascript
 // Concepto: ...rest captura argumentos sobrantes en un array real.
-function generarInforme(categoria, ...________) {
+function generarInforme(categoria, ...items) {
     return `Informe de ${categoria}: ${items.join(" – ")}`;
 }
 console.log(generarInforme("Ventas", "Enero", "Febrero", "Marzo"));
@@ -103,9 +103,9 @@ const estructura = {
     ]
 };
 const idx = 0;
-const res0 = estructura.bloques?.[________]?.ejecutar?.();
+const res0 = estructura.bloques?.[idx]?.ejecutar?.();
 console.log(res0); // "A ejecutado"
-const res1 = estructura.bloques?.[1]?.________?.();
+const res1 = estructura.bloques?.[1]?.ejecutar?.();
 console.log(res1); // undefined
 const res2 = estructura.bloques?.[2]?.acciones?.[0];
 console.log(res2); // "imprimir"
@@ -150,7 +150,7 @@ console.log(clienteNombre, ciudadEntrega); // "Carlos" "Lima"
 
 // Completa para que en el siguiente objeto sin dirección se obtenga "Desconocida":
 const pedido2 = { id: 102, cliente: { nombre: "Ana" } };
-const { cliente: { direccion: { ciudad = ________ } = {} } } = pedido2;
+const { cliente: { direccion: { ciudad = "Desconocida" } = {} } } = pedido2;
 console.log(ciudad); // "Desconocida"
 ```
 
@@ -174,7 +174,7 @@ console.log(ttlFinal, timeout); // 0 5000
 // Concepto: ??= asigna si la variable es null/undefined, respetando falsy.
 const ajustes = { compresion: false, nivel: 0 };
 ajustes.compresion ??= true; // no cambia (false no es null/undefined)
-ajustes.nivel ________ 5;    // sí cambia porque nivel es 0, que es falsy pero no null/undefined
+ajustes.nivel ||= 5;    // sí cambia porque nivel es 0, que es falsy pero no null/undefined
 // ¿Qué operador de asignación completa la línea? (escribe el operador)
 console.log(ajustes); // { compresion: false, nivel: 5 }
 ```
@@ -205,12 +205,12 @@ const empleados = [
 ];
 // Obtén un array con los nombres de los empleados activos del área "TI"
 const activosTI = empleados
-    .____(e => e.activo && e.area === "TI")
-    .____(e => e.nombre);
+    .filter(e => e.activo && e.area === "TI")
+    .map(e => e.nombre);
 console.log(activosTI); // ["Ana", "Mía"]
 
 // Encuentra el primer empleado inactivo
-const inactivo = empleados.____(e => !e.activo);
+const inactivo = empleados.find(e => !e.activo);
 console.log(inactivo); // { id: 2, nombre: "Luis", area: "Ventas", activo: false }
 ```
 
@@ -233,12 +233,12 @@ class Dispositivo {
     encender() { this.#encendido = true; return `${this.marca} encendido`; }
     get estado() { return this.#encendido; }
 }
-class Telefono ________ Dispositivo {
+class Telefono extends Dispositivo {
     #garantia;               // meses de garantía
     constructor(marca, modelo, garantia) {
         super(marca);
         this.modelo = modelo;
-        this.#garantia = ________;
+        this.#garantia = garantia;
     }
     infoCompleta() {
         return `${this.marca} ${this.modelo} - Garantía: ${this.#garantia} meses - Estado: ${this.estado ? "activo" : "apagado"}`;
@@ -275,7 +275,7 @@ export default function iva(monto) { return monto * 0.18; }
 export const descuento = (monto, pct) => monto * (1 - pct / 100);
 
 // ── main.js ──
-import iva, { currency, ________ } from "./helpers.js";
+import iva, { currency, descuento } from "./helpers.js";
 console.log(iva(100));                // 18
 console.log(currency(99.9));          // "BsD 99.90"
 console.log(descuento(100, 20));      // 80
@@ -296,12 +296,12 @@ console.log(mensaje); // "Estado del producto: Quedan 5"
 const conocidos = new Set(["Ana", "Luis", "Mía"]);
 const asistentes = ["Luis", "Pedro", "Mía"];
 // Crea un array con los asistentes que NO son conocidos
-const nuevos = asistentes.filter(nombre => !conocidos.________(nombre));
+const nuevos = asistentes.filter(nombre => !conocidos.has(nombre));
 console.log(nuevos); // ["Pedro"]
 
 // Completa para eliminar duplicados de un array usando Set:
 const repetidos = [1, 2, 2, 3, 3, 3];
-const unicos = [...new ________(repetidos)];
+const unicos = [...new set(repetidos)];
 console.log(unicos); // [1, 2, 3]
 ```
 
@@ -326,7 +326,7 @@ console.log(segundoProducto); // undefined
 ### Ejercicio 20 – Desestructuración con rest en parámetros y retorno de objeto
 ```javascript
 // Concepto: Recoge el resto de propiedades en un objeto y devuelve un nuevo objeto resumen.
-function partirObjeto({ id, nombre, ...________ }) {
+function partirObjeto({ id, nombre, ...resto }) {
     return { identificador: id, extra: resto };
 }
 const entrada = { id: 123, nombre: "Teclado", color: "negro", precio: 49.99 };
